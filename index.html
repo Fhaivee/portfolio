@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Zulfi — Systems Engineer & Home Lab Enthusiast. Specializing in self-hosted infrastructure, networking, cybersecurity, and virtualization. Depok, West Java.">
+  <meta name="keywords" content="Zulfi, systems engineer, homelab, self-hosted, proxmox, docker, networking, cybersecurity, portfolio">
+  <meta name="author" content="Achmad Fahmi Zulfi">
+  <title>Zulfi — Systems Engineer & Home Lab Enthusiast</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' rx='8' fill='%237c3aed'/><text x='50%25' y='56%25' font-family='monospace' font-size='24' font-weight='900' fill='white' text-anchor='middle' dominant-baseline='middle'>F</text></svg>">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#home" class="nav-logo">
+        <div class="logo-icon">F</div>
+        <span>Zulfi</span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#homelab">Homelab</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========== HERO SECTION ========== -->
+  <section class="hero" id="home">
+    <canvas id="hero-network-canvas" class="hero-canvas"></canvas>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="pulse-dot"></span>
+          Infrastructure Online
+        </div>
+        <h1 class="hero-name">
+          Achmad Fahmi<br>
+          <span class="gradient-text-cyan">Zulfi</span>
+        </h1>
+        <p class="hero-title">
+          <span class="typing-text">Systems Engineer</span><span style="color: var(--cyan); animation: pulse 1s infinite;">|</span>
+        </p>
+        <p class="hero-location">
+          📍 Depok, West Java — Indonesia
+        </p>
+        <p class="hero-desc">
+          Building resilient self-hosted infrastructure from the ground up. 
+          From physical network segmentation to containerized deployments 
+          — every layer is engineered, secured, and monitored.
+        </p>
+        <div class="hero-buttons">
+          <a href="#homelab" class="btn btn-primary">
+            🖥️ View My Homelab
+          </a>
+          <a href="#projects" class="btn btn-secondary">
+            📂 View Projects
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-info-card reveal">
+        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px;">
+          System Status
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-number cyan" data-count="5" data-suffix="+">0+</div>
+            <div class="stat-label">Services Hosted</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number violet" data-count="99" data-suffix="%">0%</div>
+            <div class="stat-label">Uptime Target</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number orange" data-count="3">0</div>
+            <div class="stat-label">Security Layers</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number cyan" data-count="24" data-suffix="/7">0/7</div>
+            <div class="stat-label">Monitoring</div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px; padding: 12px 16px; background: rgba(74,222,128,0.08); border: 1px solid rgba(74,222,128,0.15); border-radius: 10px;">
+          <span style="width:8px;height:8px;border-radius:50%;background:#4ade80;animation:pulse 2s infinite;"></span>
+          <span style="font-family: var(--font-mono); font-size: 0.78rem; color: #4ade80;">All systems operational</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT SECTION ========== -->
+  <section class="section-padding" id="about">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">About Me</span>
+        <h2 class="section-title">Passionate About Systems<br>& Self-Hosted Everything</h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-photo-wrapper reveal">
+          <div class="about-photo">
+            <!-- Replace 'profile.jpg' with your photo in the assets/ folder -->
+            <!-- <img src="assets/profile.jpg" alt="Achmad Fahmi Zulfi"> -->
+            <div class="photo-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+              <span>Add your photo:<br><code style="font-size:0.7rem;color:var(--cyan);">assets/profile.jpg</code></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-text reveal">
+          <p>
+            An ambitious <span class="about-highlight">D4 Teknik Multimedia dan Jaringan</span> student 
+            at <span class="about-highlight">Politeknik Negeri Jakarta (PNJ)</span> with a deep passion for 
+            systems administration, networking, and cybersecurity.
+          </p>
+          <p>
+            I bridge the gap between low-level hardware configurations and high-level software development. 
+            Whether it's engineering a custom Linux distribution, orchestrating Docker containers, or 
+            designing secure network architectures — I thrive in creating infrastructure that is 
+            <span class="about-highlight">resilient, efficient, and fully under my control</span>.
+          </p>
+          <p>
+            Beyond the terminal, I'm a proven leader and public speaker — serving as a 
+            <span style="color: var(--orange); font-weight: 600;">GenRe Ambassador for Depok</span> 
+            and a <span style="color: var(--violet); font-weight: 600;">DBS Coding Camp Scholar</span>.
+          </p>
+
+          <div class="about-cards stagger-reveal">
+            <div class="about-card">
+              <div class="about-card-icon">🏠</div>
+              <div class="about-card-title">Self-Hoster</div>
+              <div class="about-card-desc">Every service, my own cloud</div>
+            </div>
+            <div class="about-card">
+              <div class="about-card-icon">🔐</div>
+              <div class="about-card-title">CTF Player</div>
+              <div class="about-card-desc">OSINT, Crypto, Web</div>
+            </div>
+            <div class="about-card">
+              <div class="about-card-icon">🎤</div>
+              <div class="about-card-title">Speaker</div>
+              <div class="about-card-desc">GenRe Ambassador</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SKILLS SECTION ========== -->
+  <section class="section-padding" id="skills" style="background: var(--bg-surface);">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Technical Skills</span>
+        <h2 class="section-title">My Technical Arsenal</h2>
+        <p class="section-subtitle">A full-stack systems perspective — from bare metal to application layer.</p>
+      </div>
+
+      <div class="skills-grid stagger-reveal">
+        <!-- Systems & Infrastructure -->
+        <div class="glass-card skill-card" data-accent="cyan">
+          <div class="skill-card-icon">🖥️</div>
+          <h3 class="skill-card-title">Systems & Infrastructure</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Arch Linux</span>
+            <span class="skill-tag">Custom ISO Dev</span>
+            <span class="skill-tag">Ubuntu Server</span>
+            <span class="skill-tag">Server Management</span>
+            <span class="skill-tag">Nextcloud</span>
+            <span class="skill-tag">Jellyfin</span>
+          </div>
+        </div>
+
+        <!-- Networking -->
+        <div class="glass-card skill-card" data-accent="cyan">
+          <div class="skill-card-icon">🔀</div>
+          <h3 class="skill-card-title">Networking</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Cisco Routing</span>
+            <span class="skill-tag">ZeroTier</span>
+            <span class="skill-tag">Tailscale</span>
+            <span class="skill-tag">Network Segmentation</span>
+            <span class="skill-tag">Cloudflare Tunnels</span>
+            <span class="skill-tag">DNS Config</span>
+          </div>
+        </div>
+
+        <!-- Cybersecurity -->
+        <div class="glass-card skill-card" data-accent="violet">
+          <div class="skill-card-icon">🛡️</div>
+          <h3 class="skill-card-title">Cybersecurity</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">CTF Challenges</span>
+            <span class="skill-tag">OSINT</span>
+            <span class="skill-tag">Cryptography</span>
+            <span class="skill-tag">Web Vulnerabilities</span>
+            <span class="skill-tag">Reverse Engineering</span>
+          </div>
+        </div>
+
+        <!-- Hardware & Mobile -->
+        <div class="glass-card skill-card" data-accent="violet">
+          <div class="skill-card-icon">🔧</div>
+          <h3 class="skill-card-title">Hardware & Mobile</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">PC Building</span>
+            <span class="skill-tag">Hardware Diagnostics</span>
+            <span class="skill-tag">Android Rooting</span>
+            <span class="skill-tag">Custom ROMs</span>
+            <span class="skill-tag">LSPosed</span>
+          </div>
+        </div>
+
+        <!-- Emerging Tech -->
+        <div class="glass-card skill-card" data-accent="orange">
+          <div class="skill-card-icon">🧠</div>
+          <h3 class="skill-card-title">Emerging Tech</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Local LLM Deployment</span>
+            <span class="skill-tag">Hardware Optimization</span>
+            <span class="skill-tag">AI Model Tuning</span>
+            <span class="skill-tag">Containerized AI</span>
+          </div>
+        </div>
+
+        <!-- Game Development -->
+        <div class="glass-card skill-card" data-accent="orange">
+          <div class="skill-card-icon">🎮</div>
+          <h3 class="skill-card-title">Game Development</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Kristal Engine</span>
+            <span class="skill-tag">Map Design</span>
+            <span class="skill-tag">Collision Systems</span>
+            <span class="skill-tag">Fangame Mechanics</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== HOMELAB SECTION ========== -->
+  <section class="section-padding homelab-section" id="homelab">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Infrastructure</span>
+        <h2 class="section-title">My Homelab Environment</h2>
+        <p class="section-subtitle">A production-grade self-hosted ecosystem — built from scratch, secured by design.</p>
+      </div>
+
+      <!-- Infrastructure Pillars -->
+      <div class="homelab-pillars stagger-reveal">
+        <!-- Pillar 1: Physical Network -->
+        <div class="glass-card pillar-card">
+          <div class="pillar-number">Layer 01</div>
+          <h3 class="pillar-title">
+            <span class="gradient-text-cyan">Physical Network</span><br>& Segmentation
+          </h3>
+          <p class="pillar-desc">
+            Segmented dual-router architecture built entirely from budget and salvaged hardware. 
+            The primary router handles external traffic, while a dedicated secondary router 
+            routes directly to my lab environment — hardwiring the server, laptop, and 
+            experimental gear. Proof that great infrastructure doesn't need a big budget.
+          </p>
+          <div class="pillar-techs">
+            <span class="pillar-tech cyan">Dual-Router</span>
+            <span class="pillar-tech cyan">Hardwired</span>
+            <span class="pillar-tech cyan">Budget Builds</span>
+          </div>
+        </div>
+
+        <!-- Pillar 2: Server & Containers -->
+        <div class="glass-card pillar-card">
+          <div class="pillar-number">Layer 02</div>
+          <h3 class="pillar-title">
+            <span class="gradient-text-violet">Ubuntu Server</span><br>& Containers
+          </h3>
+          <p class="pillar-desc">
+            The core runs on Ubuntu Server for a stable, lightweight foundation. 
+            Applications are deployed using a heavily containerized Docker approach. 
+            Dockge provides an infrastructure-as-code interface to deploy, update, 
+            and monitor all container stacks.
+          </p>
+          <div class="pillar-techs">
+            <span class="pillar-tech violet">Ubuntu Server</span>
+            <span class="pillar-tech violet">Docker</span>
+            <span class="pillar-tech violet">Dockge</span>
+          </div>
+        </div>
+
+        <!-- Pillar 3: Secure Access -->
+        <div class="glass-card pillar-card">
+          <div class="pillar-number">Layer 03</div>
+          <h3 class="pillar-title">
+            <span class="gradient-text-violet">Secure Access</span><br>& Tunneling
+          </h3>
+          <p class="pillar-desc">
+            Dual-strategy security. Cloudflare Tunnels expose services externally — 
+            home IP fully hidden behind the edge network. Tailscale and ZeroTier provide 
+            encrypted mesh VPN overlays for private administrative access from anywhere 
+            in the world.
+          </p>
+          <div class="pillar-techs">
+            <span class="pillar-tech cyan">Cloudflare Tunnels</span>
+            <span class="pillar-tech violet">Tailscale</span>
+            <span class="pillar-tech violet">ZeroTier</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Services -->
+      <div class="reveal">
+        <div class="services-header">
+          <h3>🔗 Live Self-Hosted Services</h3>
+          <div class="services-status">
+            <span class="live-dot"></span>
+            Systems Online
+          </div>
+        </div>
+
+        <div class="services-grid stagger-reveal">
+          <!-- Nextcloud -->
+          <a href="https://nc.justifhaive07.my.id" target="_blank" rel="noopener" class="glass-card service-card" id="service-nextcloud">
+            <div class="service-card-header">
+              <div class="service-card-info">
+                <div class="service-icon nc">☁️</div>
+                <div>
+                  <div class="service-name">Nextcloud</div>
+                  <div class="service-desc">Personal cloud storage & collaboration</div>
+                </div>
+              </div>
+              <span class="service-status-dot"></span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <span class="service-url">nc.justifhaive07.my.id</span>
+              <span class="service-card-arrow">→</span>
+            </div>
+          </a>
+
+          <!-- Uptime Kuma -->
+          <a href="https://uptime.justifhaive07.my.id" target="_blank" rel="noopener" class="glass-card service-card" id="service-uptime">
+            <div class="service-card-header">
+              <div class="service-card-info">
+                <div class="service-icon uptime">📊</div>
+                <div>
+                  <div class="service-name">Uptime Kuma</div>
+                  <div class="service-desc">Server monitoring & status dashboard</div>
+                </div>
+              </div>
+              <span class="service-status-dot"></span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <span class="service-url">uptime.justifhaive07.my.id</span>
+              <span class="service-card-arrow">→</span>
+            </div>
+          </a>
+
+          <!-- Jellyfin -->
+          <a href="https://jellyfin.justifhaive07.my.id" target="_blank" rel="noopener" class="glass-card service-card" id="service-jellyfin">
+            <div class="service-card-header">
+              <div class="service-card-info">
+                <div class="service-icon jellyfin">🎬</div>
+                <div>
+                  <div class="service-name">Jellyfin</div>
+                  <div class="service-desc">Self-hosted media streaming server</div>
+                </div>
+              </div>
+              <span class="service-status-dot"></span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <span class="service-url">jellyfin.justifhaive07.my.id</span>
+              <span class="service-card-arrow">→</span>
+            </div>
+          </a>
+
+          <!-- Dockge -->
+          <a href="#" class="glass-card service-card" id="service-dockge">
+            <div class="service-card-header">
+              <div class="service-card-info">
+                <div class="service-icon" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8);">📦</div>
+                <div>
+                  <div class="service-name">Dockge</div>
+                  <div class="service-desc">Container orchestration dashboard</div>
+                </div>
+              </div>
+              <span class="service-status-dot"></span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <span class="service-url">Private — via Tailscale VPN</span>
+              <span class="service-card-arrow">🔒</span>
+            </div>
+          </a>
+
+          <!-- Ubuntu Server -->
+          <a href="#" class="glass-card service-card" id="service-ubuntu">
+            <div class="service-card-header">
+              <div class="service-card-info">
+                <div class="service-icon" style="background: linear-gradient(135deg, #e95420, #dd4814);">🐧</div>
+                <div>
+                  <div class="service-name">Ubuntu Server</div>
+                  <div class="service-desc">Host OS — server management via SSH</div>
+                </div>
+              </div>
+              <span class="service-status-dot"></span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <span class="service-url">Private — via Tailscale VPN</span>
+              <span class="service-card-arrow">🔒</span>
+            </div>
+          </a>
+
+          <!-- More coming soon -->
+          <div class="glass-card service-card coming-soon" id="service-coming-soon">
+            <div class="service-card-header">
+              <div class="service-card-info">
+                <div class="service-icon coming">➕</div>
+                <div>
+                  <div class="service-name" style="color: var(--text-muted);">More Coming Soon</div>
+                  <div class="service-desc">Gitea, Vaultwarden, and beyond...</div>
+                </div>
+              </div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <span class="service-url" style="color: var(--text-muted);">Expanding the ecosystem</span>
+              <span class="service-card-arrow">🚀</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROJECTS SECTION ========== -->
+  <section class="section-padding" id="projects" style="background: var(--bg-surface);">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Projects</span>
+        <h2 class="section-title">Notable Projects</h2>
+        <p class="section-subtitle">Selected works that demonstrate engineering depth and creative problem-solving.</p>
+      </div>
+
+      <div class="projects-grid stagger-reveal">
+        <!-- Zulvi Linux -->
+        <div class="glass-card project-card">
+          <div class="project-card-visual zulvi">🐧</div>
+          <div class="project-card-body">
+            <h3 class="project-card-title">Zulvi Linux</h3>
+            <p class="project-card-desc">
+              Engineered a custom Arch Linux distribution from the ground up, complete with a 
+              personalized fastfetch logo and OS architecture. Successfully deployed as a final 
+              academic project — demonstrating deep Linux internals knowledge.
+            </p>
+            <div class="project-card-tags">
+              <span class="project-tag">Arch Linux</span>
+              <span class="project-tag">Custom ISO</span>
+              <span class="project-tag">Shell</span>
+              <span class="project-tag">System Design</span>
+            </div>
+            <a href="https://github.com/Fhaivee" target="_blank" class="project-link">
+              View on GitHub <span>→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- SI-CAKAP -->
+        <div class="glass-card project-card">
+          <div class="project-card-visual sicakap">🤖</div>
+          <div class="project-card-body">
+            <h3 class="project-card-title">SI-CAKAP</h3>
+            <p class="project-card-desc">
+              Developed the concept for an AI-based platform designed to assist in screening 
+              civil servant candidates by analyzing their digital footprints across public data 
+              sources — combining OSINT methodology with machine learning.
+            </p>
+            <div class="project-card-tags">
+              <span class="project-tag">AI/ML</span>
+              <span class="project-tag">OSINT</span>
+              <span class="project-tag">Python</span>
+              <span class="project-tag">Concept</span>
+            </div>
+            <a href="https://github.com/Fhaivee" target="_blank" class="project-link">
+              View on GitHub <span>→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Homelab -->
+        <div class="glass-card project-card">
+          <div class="project-card-visual homelab">🏠</div>
+          <div class="project-card-body">
+            <h3 class="project-card-title">Homelab Server Environment</h3>
+            <p class="project-card-desc">
+              Designed and maintained a self-hosted server environment on Ubuntu Server, hosting 
+              personal cloud storage, media streaming, and monitoring services — built from budget 
+              hardware with multi-layer security via Cloudflare Tunnels and mesh VPNs.
+            </p>
+            <div class="project-card-tags">
+              <span class="project-tag">Ubuntu Server</span>
+              <span class="project-tag">Docker</span>
+              <span class="project-tag">Cloudflare</span>
+              <span class="project-tag">Self-Hosted</span>
+            </div>
+            <a href="#homelab" class="project-link">
+              View Infrastructure <span>→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== EXPERIENCE SECTION ========== -->
+  <section class="section-padding" id="experience">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Experience</span>
+        <h2 class="section-title">Leadership & Achievements</h2>
+        <p class="section-subtitle">A timeline of growth — from community advocacy to technical scholarship.</p>
+      </div>
+
+      <div class="timeline reveal">
+        <!-- GenRe Ambassador -->
+        <div class="timeline-item">
+          <div class="timeline-dot orange"></div>
+          <div class="timeline-date">Active Role</div>
+          <h3 class="timeline-title">GenRe Ambassador for Depok</h3>
+          <p class="timeline-org" style="color: var(--orange);">BKKBN — Generasi Berencana</p>
+          <p class="timeline-desc">
+            Active community advocate utilizing strong public speaking and organizational skills 
+            to engage and educate local youth. Leading workshops, campaigns, and community outreach 
+            programs across Depok, West Java.
+          </p>
+        </div>
+
+        <!-- DBS Coding Camp -->
+        <div class="timeline-item">
+          <div class="timeline-dot violet"></div>
+          <div class="timeline-date">Scholarship Recipient</div>
+          <h3 class="timeline-title">DBS Coding Camp Scholar</h3>
+          <p class="timeline-org" style="color: var(--violet);">DBS Foundation</p>
+          <p class="timeline-desc">
+            Awarded a competitive scholarship to further develop programming and software engineering 
+            capabilities. Focused on building production-grade applications and modern development practices.
+          </p>
+        </div>
+
+        <!-- PNJ -->
+        <div class="timeline-item">
+          <div class="timeline-dot cyan"></div>
+          <div class="timeline-date">Current — D4 Program</div>
+          <h3 class="timeline-title">Teknik Multimedia dan Jaringan</h3>
+          <p class="timeline-org">Politeknik Negeri Jakarta (PNJ)</p>
+          <p class="timeline-desc">
+            Pursuing a D4 degree in Multimedia and Network Engineering. Coursework spans 
+            network architecture, systems administration, multimedia development, and applied 
+            cybersecurity — with hands-on lab projects that fuel the homelab.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT SECTION ========== -->
+  <section class="section-padding contact-section" id="contact">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Contact</span>
+        <h2 class="section-title">Let's Connect</h2>
+        <p class="section-subtitle">Have a project in mind or just want to talk infrastructure? Reach out.</p>
+      </div>
+
+      <div class="contact-grid reveal">
+        <div class="contact-text">
+          <h3>Get In Touch</h3>
+          <p>
+            I'm always interested in discussing self-hosted infrastructure, networking challenges, 
+            cybersecurity, or potential collaborations. Feel free to reach out through any channel below.
+          </p>
+
+          <div class="contact-links">
+            <a href="mailto:chmdzlf@gmail.com" class="contact-link-item" id="contact-email">
+              <div class="contact-link-icon">📧</div>
+              <div>
+                <div style="font-weight: 600;">Email</div>
+                <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--cyan);">chmdzlf@gmail.com</div>
+              </div>
+            </a>
+
+            <a href="https://github.com/Fhaivee" target="_blank" class="contact-link-item" id="contact-github">
+              <div class="contact-link-icon">🐙</div>
+              <div>
+                <div style="font-weight: 600;">GitHub</div>
+                <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--cyan);">github.com/Fhaivee</div>
+              </div>
+            </a>
+
+            <a href="https://www.linkedin.com/in/achmad-fahmi-9678a338a/" target="_blank" class="contact-link-item" id="contact-linkedin">
+              <div class="contact-link-icon">💼</div>
+              <div>
+                <div style="font-weight: 600;">LinkedIn</div>
+                <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--cyan);">Achmad Fahmi</div>
+              </div>
+            </a>
+
+            <a href="https://uptime.justifhaive07.my.id" target="_blank" class="contact-link-item" id="contact-status">
+              <div class="contact-link-icon">📊</div>
+              <div>
+                <div style="font-weight: 600;">Server Status</div>
+                <div style="font-family: var(--font-mono); font-size: 0.85rem; color: #4ade80;">uptime.justifhaive07.my.id</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <form id="contact-form" class="contact-form">
+          <div class="form-group">
+            <label for="form-name">Name</label>
+            <input type="text" id="form-name" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label for="form-email">Email</label>
+            <input type="email" id="form-email" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group">
+            <label for="form-message">Message</label>
+            <textarea id="form-message" placeholder="Tell me about your project or question..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+            Send Message →
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-text">
+        Built & self-hosted by <span>Zulfi</span> · Powered by Ubuntu Server, Docker & Cloudflare · © 2026
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/network.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
