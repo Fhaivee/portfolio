@@ -1,10 +1,13 @@
-/* =============================================
-   NETWORK VISUALIZATION — Canvas Animation
-   Renders the interactive homelab network topology
-   ============================================= */
+/* Network Visualization — Canvas Animation
+   Renders homelab network topology in hero background.
+   Respects prefers-reduced-motion (R-39): hidden via CSS, but also
+   skip init entirely so no CPU is spent on invisible canvas. */
 
 class NetworkVisualization {
   constructor(canvasId) {
+    // Skip entirely if reduced motion preferred
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
     this.canvas = document.getElementById(canvasId);
     if (!this.canvas) return;
     this.ctx = this.canvas.getContext('2d');
@@ -20,11 +23,9 @@ class NetworkVisualization {
       cyanDim: 'rgba(0,229,255,0.15)',
       violet: '#7c3aed',
       violetDim: 'rgba(124,58,237,0.15)',
-      orange: '#ff9f43',
-      green: '#4ade80',
-      textPrimary: '#e8e8f0',
-      textMuted: '#6a6a88',
-      surface: '#12121a',
+      textPrimary: '#e4e4ec',
+      textMuted: '#606078',
+      surface: '#111118',
       border: 'rgba(255,255,255,0.08)',
     };
 
@@ -60,68 +61,31 @@ class NetworkVisualization {
 
     const cx = this.width / 2;
     const cy = this.height / 2;
-    const isMobile = this.width < 768;
-    const scale = isMobile ? 0.6 : 1;
+    const scale = this.width < 768 ? 0.6 : 1;
 
-    // --- Define Nodes ---
-    // Layer 0: External
+    // Network nodes
     this.addNode('internet', '🌐', 'Internet', cx - 280 * scale, cy - 120 * scale, 28, this.colors.textMuted, 'external');
-
-    // Layer 1: Routers
-    this.addNode('router1', '📡', 'Primary Router', cx - 140 * scale, cy - 40 * scale, 26, this.colors.cyan, 'network');
-    this.addNode('router2', '🔀', 'Lab Router', cx - 140 * scale, cy + 80 * scale, 26, this.colors.cyan, 'network');
-
-    // Layer 2: Server Core
-    this.addNode('server', '🐧', 'Ubuntu Server', cx + 20 * scale, cy + 20 * scale, 34, this.colors.violet, 'server');
-
-    // Layer 3: Container Layer
+    this.addNode('router1', '📡', 'Router 1', cx - 140 * scale, cy - 40 * scale, 26, this.colors.cyan, 'network');
+    this.addNode('router2', '📡', 'Router 2', cx - 140 * scale, cy + 80 * scale, 26, this.colors.cyan, 'network');
+    this.addNode('server', '🖥️', 'Server', cx + 20 * scale, cy + 20 * scale, 34, this.colors.violet, 'server');
     this.addNode('docker', '🐳', 'Docker', cx + 160 * scale, cy - 60 * scale, 24, this.colors.cyan, 'container');
-    this.addNode('dockge', '📦', 'Dockge', cx + 160 * scale, cy + 100 * scale, 24, this.colors.cyan, 'container');
-
-    // Layer 4: Services
-    this.addNode('nextcloud', '☁️', 'Nextcloud', cx + 290 * scale, cy - 130 * scale, 22, this.colors.green, 'service');
-    this.addNode('jellyfin', '🎬', 'Jellyfin', cx + 290 * scale, cy - 40 * scale, 22, this.colors.green, 'service');
-    this.addNode('uptime', '📊', 'Uptime Kuma', cx + 290 * scale, cy + 50 * scale, 22, this.colors.green, 'service');
-    this.addNode('more', '➕', 'More Soon', cx + 290 * scale, cy + 140 * scale, 20, this.colors.textMuted, 'service');
-
-    // Layer: Security Overlay
-    this.addNode('cloudflare', '🛡️', 'CF Tunnels', cx - 30 * scale, cy - 160 * scale, 22, this.colors.orange, 'security');
     this.addNode('tailscale', '🔒', 'Tailscale', cx + 80 * scale, cy + 180 * scale, 22, this.colors.violet, 'security');
-    this.addNode('zerotier', '🌀', 'ZeroTier', cx + 200 * scale, cy + 200 * scale, 22, this.colors.violet, 'security');
-
-    // --- Device Nodes ---
     this.addNode('laptop', '💻', 'Laptop', cx - 140 * scale, cy + 180 * scale, 22, this.colors.textMuted, 'device');
 
-    // --- Define Connections ---
-    // Physical network path
+    // Connections
     this.addConnection('internet', 'router1', this.colors.textMuted, 1.5, false);
     this.addConnection('router1', 'router2', this.colors.cyan, 2, true);
     this.addConnection('router2', 'server', this.colors.cyan, 2.5, true);
-    this.addConnection('router2', 'laptop', this.colors.textMuted, 1, false);
-
-    // Server to containers
+    this.addConnection('router2', 'laptop', this.colors.textMuted, 1, false, true);
     this.addConnection('server', 'docker', this.colors.violet, 2, true);
-    this.addConnection('server', 'dockge', this.colors.violet, 2, true);
-
-    // Containers to services
-    this.addConnection('docker', 'nextcloud', this.colors.green, 1.5, true);
-    this.addConnection('docker', 'jellyfin', this.colors.green, 1.5, true);
-    this.addConnection('docker', 'uptime', this.colors.green, 1.5, true);
-    this.addConnection('dockge', 'more', this.colors.textMuted, 1, false);
-
-    // Security tunnels (dashed)
-    this.addConnection('cloudflare', 'router1', this.colors.orange, 1.5, true, true);
-    this.addConnection('cloudflare', 'server', this.colors.orange, 1.5, true, true);
-    this.addConnection('tailscale', 'server', this.colors.violet, 1.2, true, true);
-    this.addConnection('zerotier', 'server', this.colors.violet, 1.2, true, true);
+    this.addConnection('tailscale', 'server', this.colors.violet, 1.2, false, true);
   }
 
   addNode(id, emoji, label, x, y, radius, color, type) {
     this.nodes.push({
-      id, emoji, label, x, y, radius, color, type,
-      baseX: x, baseY: y,
-      hovered: false,
+      id, emoji, label, x, y, baseX: x, baseY: y, radius, color, type,
       pulsePhase: Math.random() * Math.PI * 2,
+      hovered: false,
     });
   }
 
@@ -129,8 +93,7 @@ class NetworkVisualization {
     this.connections.push({ fromId, toId, color, width, hasParticles, dashed });
 
     if (hasParticles) {
-      const count = 2;
-      for (let i = 0; i < count; i++) {
+      for (let i = 0; i < 2; i++) {
         this.particles.push({
           fromId, toId, color,
           progress: Math.random(),
@@ -174,7 +137,6 @@ class NetworkVisualization {
     this.ctx.lineWidth = width;
     this.ctx.globalAlpha = 0.4;
 
-    // Slightly curved line using quad bezier
     const midX = (from.x + to.x) / 2;
     const midY = (from.y + to.y) / 2;
     const offsetX = (to.y - from.y) * 0.1;
@@ -191,20 +153,19 @@ class NetworkVisualization {
     const t = this.frame * 0.02;
     const pulse = Math.sin(t + node.pulsePhase) * 0.12 + 1;
 
-    // Check hover
+    // Hover detection
     const dx = this.mouse.x - node.x;
     const dy = this.mouse.y - node.y;
-    const dist = Math.sqrt(dx * dx + dy * dy);
-    node.hovered = dist < node.radius + 10;
+    node.hovered = Math.sqrt(dx * dx + dy * dy) < node.radius + 10;
 
-    // Subtle floating
+    // Gentle float
     node.x = node.baseX + Math.sin(t * 0.5 + node.pulsePhase) * 3;
     node.y = node.baseY + Math.cos(t * 0.4 + node.pulsePhase) * 3;
 
     const r = node.radius * (node.hovered ? 1.15 : 1);
 
-    // Outer glow
-    if (node.type !== 'external' && node.type !== 'device') {
+    // Subtle glow (not on device nodes)
+    if (node.type && node.type !== 'device') {
       ctx.save();
       ctx.beginPath();
       ctx.arc(node.x, node.y, r + 12, 0, Math.PI * 2);
@@ -217,7 +178,7 @@ class NetworkVisualization {
       ctx.restore();
     }
 
-    // Node background
+    // Background circle
     ctx.save();
     ctx.beginPath();
     ctx.arc(node.x, node.y, r, 0, Math.PI * 2);
@@ -253,18 +214,16 @@ class NetworkVisualization {
     p.progress += p.speed;
     if (p.progress > 1) p.progress = 0;
 
-    // Interpolate along the curved path
     const t = p.progress;
-    const midX = (from.x + to.x) / 2 + (to.y - from.y) * 0.1;
-    const midY = (from.y + to.y) / 2 + (from.x - to.x) * 0.1;
+    const cpX = (from.x + to.x) / 2 + (to.y - from.y) * 0.1;
+    const cpY = (from.y + to.y) / 2 + (from.x - to.x) * 0.1;
 
-    const x = (1 - t) * (1 - t) * from.x + 2 * (1 - t) * t * midX + t * t * to.x;
-    const y = (1 - t) * (1 - t) * from.y + 2 * (1 - t) * t * midY + t * t * to.y;
+    const x = (1 - t) * (1 - t) * from.x + 2 * (1 - t) * t * cpX + t * t * to.x;
+    const y = (1 - t) * (1 - t) * from.y + 2 * (1 - t) * t * cpY + t * t * to.y;
 
     this.ctx.save();
     this.ctx.beginPath();
     this.ctx.arc(x, y, p.size, 0, Math.PI * 2);
-
     const grad = this.ctx.createRadialGradient(x, y, 0, x, y, p.size * 3);
     grad.addColorStop(0, p.color);
     grad.addColorStop(1, 'transparent');
@@ -278,7 +237,6 @@ class NetworkVisualization {
     this.ctx.clearRect(0, 0, this.width, this.height);
     this.frame++;
 
-    // Draw connections
     for (const conn of this.connections) {
       const from = this.getNode(conn.fromId);
       const to = this.getNode(conn.toId);
@@ -287,12 +245,10 @@ class NetworkVisualization {
       }
     }
 
-    // Draw particles
     for (const p of this.particles) {
       this.drawParticle(p);
     }
 
-    // Draw nodes
     for (const node of this.nodes) {
       this.drawNode(node);
     }
@@ -301,7 +257,6 @@ class NetworkVisualization {
   }
 }
 
-// Initialize when DOM loaded
 document.addEventListener('DOMContentLoaded', () => {
   new NetworkVisualization('hero-network-canvas');
 });
